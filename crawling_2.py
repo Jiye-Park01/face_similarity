@@ -12,6 +12,8 @@ from tqdm import tqdm  # tqdm.notebook을 tqdm으로 변경
 import os
 import urllib.request
 
+search_words = ["IU", "에스파 카리나", "강동원", "이종석", "이준기", "조정석", "에스파 윈터", "트와이스 나연"]
+
 # 검색할 키워드 입력
 query = input('검색할 키워드를 입력하세요: ') + ' 사진'
 
@@ -45,44 +47,6 @@ if not os.path.exists(folder_name):
 image_tab = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="hdtb-sc"]/div/div/div[1]/div/div[2]/a')))
 image_tab.click()
 time.sleep(2)
-
-# 스크롤을 통해 이미지 로드
-# SCROLL_PAUSE_TIME = 1
-# last_height = driver.execute_script("return document.body.scrollHeight")
-# while True:
-#     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-#     time.sleep(SCROLL_PAUSE_TIME)IU
-#     new_height = driver.execute_script("return document.body.scrollHeight")
-#     if new_height == last_height:
-#         try:
-#             # "더보기" 버튼 클릭
-#             driver.find_element(By.CLASS_NAME, 'mye4qd').click()
-#         except:
-#             break
-#     last_height = new_height
-
-# # 스크롤을 최상단으로
-# driver.execute_script("window.scrollTo(0, 0)") 
-# driver.implicitly_wait(20)
-
-# # 이미지 링크들 가져오기
-# links = driver.find_elements(By.CSS_SELECTOR, 'img.Q4LuWd')  # 이미지 선택자를 수정
-
-# # 이미지 링크들 반복문 돌려서 이미지 다운로드
-# for i, link in tqdm(enumerate(links), total=len(links)):
-#     try:
-#         imgUrl = link.get_attribute("src")
-#         if imgUrl:
-#             # 이미지 다운로드
-#             urllib.request.urlretrieve(imgUrl, os.path.join(folder_name, f"{i+1}.jpg"))
-#     except Exception as e:
-#         print(f"Error downloading image {i+1}: {e}")
-
-# # 크롬 드라이버 종료
-# driver.quit()
-
-# print("크롤링 종료")
-
 
 elem = driver.find_element(By.TAG_NAME, 'body')
 for i in range(60):
